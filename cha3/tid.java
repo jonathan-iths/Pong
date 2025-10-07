@@ -1,45 +1,29 @@
 package cha3;
 
 public class tid {
-    int h;
-    int m;
-    int s;
+    private int h, m , s;
+
+    public int getH() {return this.h;}
+    public void setH(int h) {this.h = h;}
+
+    public int getM() {return this.m;}
+    public void setM(int m) {this.m = m;}
+
+    public int getS() {return this.s;}
+    public void setS(int s) {this.s =s;}
+
+    public void toString1(){
+        System.out.printf("%02d:%02d:%02d",h,m,s);
+    }
+
+    public void toString12(){
+        int newH = (h== 0 || h == 12)? 12: h % 12;
+        String x = (h < 12) ? "AM" : "PM";
+        System.out.printf("%02d:%02d:%02d %s", newH,m,s, x);
+    }
+
+
     
-    int getH(){
-        return this.h;
-    }
-    int getM(){
-        return this.m;
-    }
-    int getS(){
-        return this.s;
-    }
-    void setH(int h){
-        this.h = h;
-    }
-    void setM(int m){
-        this.m = m;
-    }
-    void setS(int s){
-        this.s =s;
-    }
-
-    static void toString1(int h,int m,int s){
-        System.out.print(m<10? h + ":" + "0" + m +":" + s: h + ":" + m +":" + s);
-    }
-
-    static void toString12(int h, int m, int s){
-        String x = "AM";
-        if(h>12){
-            h = h-12; x = "PM";
-        }
-        if(h==12){
-            x = "PM";
-        } 
-        toString1(h,m,s);
-        System.out.print(" " + x);
-    }
-
     tid(){
     }
 
