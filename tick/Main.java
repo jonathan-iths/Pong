@@ -8,7 +8,7 @@ public class Main {
         int y;
         //System.out.println("[x/o]?");
         //String player1 = new Scanner(System.in).nextLine();
-        String player2 = "o";
+        String player2 = "o"; //BYT TILL O EFTER TEST!!!!!!!!!!
         String player1 = "x";
         //if(player1 == "x"){player2 = "o";}else{player2 = "x";};
         int j = 1;
@@ -16,10 +16,11 @@ public class Main {
         System.out.printf("__%s|%s|%s__\n",d,e,f);
         System.out.printf("  %s|%s|%s \n",g,h,i);
         do{
-            y = new Scanner(System.in).nextInt();
+            if(j%2 != 0){y = new Scanner(System.in).nextInt();}else{y = (int)(Math.random()*10) +1;}
             switch (y) {
                 case 1:
-                    if(j%2 != 0){a=player1;}else{a=player2;;}
+                //&& !(a.equals("x") || a.equals("o"))
+                    if(j%2 != 0 ){a=player1;}else{a=player2;;}
                     ++j;
                     break;
                 case 2:
@@ -59,9 +60,8 @@ public class Main {
             System.out.printf("__%s|%s|%s__\n",d,e,f);
             System.out.printf("  %s|%s|%s \n",g,h,i);
 
-    }while((!(a.equals(b) && b.equals(c))) || (!(a.equals(d) && d.equals(g))));
+    }while(!((a.equals(b) && b.equals(c)) || (a.equals(d) && d.equals(g)) || (a.equals(e) && e.equals(i)) || (e.equals(d) && d.equals(f)) || (e.equals(b) && b.equals(h)) || (g.equals(e) && e.equals(c))));
     
-
         }
 
     
