@@ -6,21 +6,20 @@ public class Main {
         
         String a = "1", b= "2",c= "3",d= "4",e= "5",f= "6",g= "7",h= "8",i= "9";
         int y;
-        //System.out.println("[x/o]?");
-        //String player1 = new Scanner(System.in).nextLine();
-        String player2 = "o"; //BYT TILL O EFTER TEST!!!!!!!!!!
-        String player1 = "x";
-        //if(player1 == "x"){player2 = "o";}else{player2 = "x";};
+        System.out.println("[x/o]?");
+        String player1 = new Scanner(System.in).nextLine();
+        String player2;
+        if(player1.equals("x")){player2 = "o";}else{player2 = "x";}
         int j = 1;
         System.out.printf("__%s|%s|%s__\n",a,b,c);
         System.out.printf("__%s|%s|%s__\n",d,e,f);
         System.out.printf("  %s|%s|%s \n",g,h,i);
         do{
-            if(j%2 != 0){y = new Scanner(System.in).nextInt();}else{y = (int)(Math.random()*10) +1;}
+            y = new Scanner(System.in).nextInt();
+            
             switch (y) {
                 case 1:
-                //&& !(a.equals("x") || a.equals("o"))
-                    if(j%2 != 0 ){a=player1;}else{a=player2;;}
+                    if(j%2 != 0 ){a=player1;}else{a=player2;}
                     ++j;
                     break;
                 case 2:
