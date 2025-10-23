@@ -11,6 +11,8 @@ public class Pongam extends JPanel implements KeyListener{
     private Ball gameBall;
     private Paddle mePaddle, uPaddle;
     private int meScore, uScore;
+    Action upAction;
+    Action downAction;
 
     public void paintComponent(Graphics g){
         g.setColor(Color.BLACK);
@@ -18,16 +20,20 @@ public class Pongam extends JPanel implements KeyListener{
         gameBall.paint(g);
         mePaddle.paint(g);
         uPaddle.paint(g);
-        g.drawString(meScore + "        " + uScore, 0, 5);
+        g.drawString(meScore + "        " + uScore, 200, 200);
 
     }
 
     public Pongam(){
-        gameBall = new Ball(300, 200, 3, 3, 10, Color.WHITE, 10);
-        mePaddle = new Paddle(10, 200, 75, 10, Color.WHITE);
-        uPaddle = new Paddle(610, 200, 75, 10, Color.WHITE);
-        addKeyListener(this);
+        gameBall = new Ball(300, 200, 6, 6, 10, Color.WHITE, 10);
+        mePaddle = new Paddle(10, 200, 75, 7, Color.WHITE);
+        uPaddle = new Paddle(610, 200, 75, 7, Color.WHITE);
+        //addKeyListener(this);
         setFocusable(true);
+        upAction = new UpAction();
+        downAction = new DonwAction();
+        mePaddle.getInputMap().put(KeyStroke.getKeyStroke('w',"wAction"));
+        mePaddle.getActionMap().put("wAction", upAction);
         meScore =0; uScore=0; 
     }
 
@@ -38,15 +44,40 @@ public class Pongam extends JPanel implements KeyListener{
         uPaddle.moveTowards(gameBall.getY());
         if(mePaddle.checkCollision(gameBall)){gameBall.reverseX();}
         if(uPaddle.checkCollision(gameBall)){gameBall.reverseX();}
+        if(gameBall.getX() < 0){ uScore++; reset();}
+        else if(gameBall.getX() > WINDOW_WIDTH){ meScore++;reset();}
   
     }
+    public void reset(){
+        gameBall.setX(300);
+        gameBall.setY(200);
+        gameBall.setCx(6);
+        gameBall.setCy(6);
+        gameBall.setSpeed(10);
+    }
+    public class UpAction extends AbstractAction{
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            mePaddle.setLocation(mePaddle.getX(), mePaddle.getY()-10);
+        }
+
+    }
+
+    public class DonwAction extends AbstractAction{
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            mePaddle.setLocation(mePaddle.getX(), mePaddle.getY()+10);
+        }
+
+    }
     
-
-
+/* 
     @Override
    public void keyPressed(KeyEvent e) {
 
-       switch ((e.getKeyCode())) {
+        switch ((e.getKeyCode())) {
             case KeyEvent.VK_W:
                 mePaddle.moveUp();
             break;
@@ -63,6 +94,12 @@ public class Pongam extends JPanel implements KeyListener{
         throw new UnsupportedOperationException("Unimplemented method 'keyReleased'");
     }
 
+    @Override
+    public void keyTyped(KeyEvent e) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'keyTyped'");
+    }
+*/
 
 
 }

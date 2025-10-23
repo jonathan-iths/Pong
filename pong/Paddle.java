@@ -1,5 +1,7 @@
 package pong;
 import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
 
 public class Paddle{
 
@@ -46,6 +48,7 @@ public class Paddle{
     }
     public int getX(){return x;}
     public int getY(){return y;}
+
     public boolean checkCollision(Ball b){
         int rightX = x + PADDLE_WIDTH;
         int bottomY = y + height;

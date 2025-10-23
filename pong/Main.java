@@ -11,6 +11,7 @@ public class Main {
         
     JFrame frame = new JFrame("test");
 
+    frame.setLayout(null);
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     frame.setSize(650,495);
     Pongam game = new Pongam();
