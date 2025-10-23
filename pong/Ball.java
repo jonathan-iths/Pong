@@ -49,4 +49,7 @@ public class Ball {
     public void reverseY(){
         cy *= -1;
     }
+    public int getY(){return y;}
+    public int getX(){ return x;}
+    public int getSize(){return size;}
 }

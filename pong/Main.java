@@ -13,13 +13,12 @@ public class Main {
 
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     frame.setSize(650,495);
-    
     Pongam game = new Pongam();
-    
     frame.add(game);
     frame.setVisible(true);
+    game.requestFocusInWindow();
 
-    Timer timer = new Timer(33, new ActionListener() {
+    Timer timer = new Timer(10, new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e){
             game.gameLogic();
