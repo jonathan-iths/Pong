@@ -23,7 +23,7 @@ public class Pongam extends JPanel implements KeyListener{
     }
 
     public Pongam(){
-        gameBall = new Ball(300, 200, 3, 3, 3, Color.WHITE, 10);
+        gameBall = new Ball(300, 200, 3, 3, 10, Color.WHITE, 10);
         mePaddle = new Paddle(10, 200, 75, 10, Color.WHITE);
         uPaddle = new Paddle(610, 200, 75, 10, Color.WHITE);
         addKeyListener(this);
