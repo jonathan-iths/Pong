@@ -11,8 +11,8 @@ public class Pongam extends JPanel implements KeyListener{
     private Ball gameBall;
     private Paddle mePaddle, uPaddle;
     private int meScore, uScore;
-    Action upAction;
-    Action downAction;
+    //Action upAction;
+    //Action downAction;
 
     public void paintComponent(Graphics g){
         g.setColor(Color.BLACK);
@@ -28,12 +28,12 @@ public class Pongam extends JPanel implements KeyListener{
         gameBall = new Ball(300, 200, 6, 6, 10, Color.WHITE, 10);
         mePaddle = new Paddle(10, 200, 75, 7, Color.WHITE);
         uPaddle = new Paddle(610, 200, 75, 7, Color.WHITE);
-        //addKeyListener(this);
+        addKeyListener(this);
         setFocusable(true);
-        upAction = new UpAction();
-        downAction = new DonwAction();
-        mePaddle.getInputMap().put(KeyStroke.getKeyStroke('w',"wAction"));
-        mePaddle.getActionMap().put("wAction", upAction);
+        //upAction = new UpAction();
+        //downAction = new DonwAction();
+        //mePaddle.getInputMap().put(KeyStroke.getKeyStroke('w',"wAction"));
+        //mePaddle.getActionMap().put("wAction", upAction);
         meScore =0; uScore=0; 
     }
 
@@ -55,9 +55,9 @@ public class Pongam extends JPanel implements KeyListener{
         gameBall.setCy(6);
         gameBall.setSpeed(10);
     }
-    public class UpAction extends AbstractAction{
+   // public class UpAction extends AbstractAction{
 
-        @Override
+       /* * @Override
         public void actionPerformed(ActionEvent e) {
             mePaddle.setLocation(mePaddle.getX(), mePaddle.getY()-10);
         }
@@ -72,8 +72,8 @@ public class Pongam extends JPanel implements KeyListener{
         }
 
     }
-    
-/* 
+    */
+
     @Override
    public void keyPressed(KeyEvent e) {
 
@@ -99,7 +99,7 @@ public class Pongam extends JPanel implements KeyListener{
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'keyTyped'");
     }
-*/
+
 
 
 }
