@@ -1,7 +1,15 @@
 package pong;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.File;
+import java.io.IOException;
+
 import javax.swing.JPanel;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.*;
 
 
@@ -20,7 +28,9 @@ public class Pongam extends JPanel implements KeyListener{
         gameBall.paint(g);
         mePaddle.paint(g);
         uPaddle.paint(g);
-        g.drawString(meScore + "        " + uScore, 200, 200);
+        g.setFont(new Font("Ariel", Font.BOLD, 72));
+        g.drawString(meScore + "        " + uScore, 200, 250);
+        g.fillRect(300,0,20,WINDOW_HEIGHT);
 
     }
 
@@ -46,6 +56,8 @@ public class Pongam extends JPanel implements KeyListener{
         if(uPaddle.checkCollision(gameBall)){gameBall.reverseX();}
         if(gameBall.getX() < 0){ uScore++; reset();}
         else if(gameBall.getX() > WINDOW_WIDTH){ meScore++;reset();}
+
+
   
     }
     public void reset(){

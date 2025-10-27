@@ -28,27 +28,15 @@ public class Ball {
     }
 
     public void bounceOffEdge(int top, int bottom){
-        if(y > bottom - size){
-            reverseY();
-        }
-        else if(y < top){
-            reverseY();
-        }
-
-       /* if(x < 0){
-            reverseX();
-
-        }
-        else if(x > 640 - size){
-            reverseX();
-        }*/
+        if(y > bottom - size){reverseY();}
+        else if(y < top){reverseY();}
     }
     public void reverseX(){
-        cx *= -1;
-    }
+        cx *= -1;}
+        
     public void reverseY(){
-        cy *= -1;
-    }
+        cy *= -1;}
+
     public int getY(){return y;}
     public void setY(int y){this.y = y;}
 
