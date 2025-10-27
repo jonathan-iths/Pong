@@ -47,15 +47,19 @@ public class Pongam extends JPanel implements KeyListener{
         meScore =0; uScore=0; 
     }
 
-    public void gameLogic(){
+    public void gameLogic() throws UnsupportedAudioFileException, IOException, LineUnavailableException{
 
         gameBall.moveBall();
         gameBall.bounceOffEdge(0, WINDOW_HEIGHT);
         uPaddle.moveTowards(gameBall.getY());
         if(mePaddle.checkCollision(gameBall)){gameBall.reverseX();}
         if(uPaddle.checkCollision(gameBall)){gameBall.reverseX();}
-        if(gameBall.getX() < 0){ uScore++; reset();}
-        else if(gameBall.getX() > WINDOW_WIDTH){ meScore++;reset();}
+        File file = new File("pong\\power-up.wav");
+        AudioInputStream audioStream = AudioSystem.getAudioInputStream(file);
+        Clip clip = AudioSystem.getClip();
+        clip.open(audioStream);
+        if(gameBall.getX() < 0){ uScore++; reset();clip.start();}
+        else if(gameBall.getX() > WINDOW_WIDTH){ meScore++;reset(); clip.start();}
 
 
   
