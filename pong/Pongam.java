@@ -3,7 +3,6 @@ import java.awt.*;
 import java.awt.event.*;
 import java.io.File;
 import java.io.IOException;
-
 import javax.swing.JPanel;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
@@ -35,8 +34,8 @@ public class Pongam extends JPanel implements KeyListener{
     }
 
     public Pongam(){
-        gameBall = new Ball(300, 200, 6, 6, 10, Color.WHITE, 10);
-        mePaddle = new Paddle(10, 200, 75, 7, Color.WHITE);
+        gameBall = new Ball(300, 200, 6, 6, 10, Color.WHITE, 20);
+        mePaddle = new Paddle(10, 200, 100, 35, Color.WHITE);
         uPaddle = new Paddle(610, 200, 75, 7, Color.WHITE);
         addKeyListener(this);
         setFocusable(true);
@@ -58,8 +57,8 @@ public class Pongam extends JPanel implements KeyListener{
         AudioInputStream audioStream = AudioSystem.getAudioInputStream(file);
         Clip clip = AudioSystem.getClip();
         clip.open(audioStream);
-        if(gameBall.getX() < 0){ uScore++; reset();clip.start();}
-        else if(gameBall.getX() > WINDOW_WIDTH){ meScore++;reset(); clip.start();}
+        if(gameBall.getX() < 4){ uScore++; reset();clip.start();}
+        else if(gameBall.getX() > uPaddle.getX()-1){ meScore++;reset(); clip.start();}
 
 
   

@@ -21,6 +21,15 @@ public class Ball {
         g.fillOval(x, y, size, size);
         
     }
+    /*public void copy(Ball b){
+        this.setX(b.getX());
+        this.setY(b.getY());
+        this.setCx(b.getCx());
+        this.setCy(b.getCy());
+        this.setSpeed(b.getSpeed());
+        this.setColor(b.getColor());
+        this.setSize(b.getSize());
+    }*/
     
     public void moveBall(){
         x += cx;
@@ -31,6 +40,7 @@ public class Ball {
         if(y > bottom - size){reverseY();}
         else if(y < top){reverseY();}
     }
+
     public void reverseX(){
         cx *= -1;}
         

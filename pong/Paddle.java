@@ -9,7 +9,7 @@ public class Paddle{
     private Color color;
 
 
-    static final int PADDLE_WIDTH = 15;
+    static final int PADDLE_WIDTH = 17;
 
 
     public Paddle(int x,int y, int height, int speed, Color color){
@@ -24,36 +24,36 @@ public class Paddle{
     public void paint(Graphics g){
 
         g.setColor(color);
-        g.fillRect(x, y, PADDLE_WIDTH, height);
-    }
+        g.fillRect(x, y, PADDLE_WIDTH, height);}
 
     public void moveUp(){
-        y -= speed;
-    }
+        y -= speed;}
+
     public void moveDown(){
-        y += speed;
-    }
+        y += speed;}
 
     public void moveTowards(int moveToY){
         int centerY = y+height/2;
 
         if(Math.abs(centerY-moveToY)> speed){
             if(centerY >moveToY){
-                y-=speed;
-            }
+                y-=speed;}
         }
+
         if(centerY < moveToY){
-            y +=speed;
-        }
+            y +=speed;}
     }
+    
     public int getX(){return x;}
     public int getY(){return y;}
 
+
+
     public boolean checkCollision(Ball b){
-        int rightX = x + PADDLE_WIDTH;
-        int bottomY = y + height;
-        if(b.getX() > (x -b.getSize()) && b.getX() < rightX){
-            if(b.getY() > y && b.getY() < bottomY){
+        int rightX = x + PADDLE_WIDTH +5;
+        int bottomY = y + height + 5;
+        if(b.getX() > (x - b.getSize()) && b.getX() < rightX){
+            if(b.getY() > y  && b.getY() < bottomY){
                 return true;
             }
         }
